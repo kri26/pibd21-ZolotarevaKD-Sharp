@@ -35,6 +35,7 @@
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
+            this.buttonCreateSport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBoat)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(130, 44);
             this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.Text = "Создать катер";
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
@@ -105,11 +106,23 @@
             this.buttonRight.UseVisualStyleBackColor = true;
             this.buttonRight.Click += new System.EventHandler(this.buttonMove_Click);
             // 
+            // buttonCreateSport
+            // 
+            this.buttonCreateSport.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonCreateSport.Location = new System.Drawing.Point(148, 12);
+            this.buttonCreateSport.Name = "buttonCreateSport";
+            this.buttonCreateSport.Size = new System.Drawing.Size(152, 44);
+            this.buttonCreateSport.TabIndex = 6;
+            this.buttonCreateSport.Text = "Создать спортивый катер";
+            this.buttonCreateSport.UseVisualStyleBackColor = true;
+            this.buttonCreateSport.Click += new System.EventHandler(this.buttonCreateSport_Click);
+            // 
             // FormBoat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 453);
+            this.Controls.Add(this.buttonCreateSport);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonLeft);
@@ -131,6 +144,7 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonRight;
+        private System.Windows.Forms.Button buttonCreateSport;
     }
 }
 

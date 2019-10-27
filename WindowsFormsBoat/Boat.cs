@@ -7,58 +7,29 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsBoat
 {
-    class Boat
+    public class Boat : Vehicle
     {
-        /// Левая координата отрисовки
-        private float _startPosX;
-        
-        /// Правая кооридната отрисовки 
-        private float _startPosY;
-
-        /// Ширина окна отрисовки
-        private int _pictureWidth;
-
-        /// Высота окна отрисовки
-        private int _pictureHeight;
-
-        /// Ширина отрисовки 
-        private const int boatWidth = 100;
-
-        /// Ширина отрисовки 
-        private const int boatHeight = 60;
-
-        /// Максимальная скорость
-        public int MaxSpeed { private set; get; }
-
-        //
-        public float Weight { private set; get; }
-        
-        /// Основной цвет 
-        public Color MainColor { private set; get; }
-
-        /// Дополнительный цвет
-        public Color DopColor { private set; get; }
-
-        public int Windows { private set; get; }
-
-        public int Capacity { private set; get; }
-
-
-        public Boat (int maxSpeed, float weight, Color mainColor, Color dopColor, int windows, int capesity)
+        /// <summary>
+        /// Ширина отрисовки автомобиля
+        /// </summary>
+        protected const int boatWidth = 100;
+        /// <summary>
+        /// Ширина отрисовки автомобиля
+        /// </summary>
+        protected const int boatHeight = 60;
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="maxSpeed">Максимальная скорость</param>
+        /// <param name="weight">Вес автомобиля</param>
+        /// <param name="mainColor">Основной цвет кузова</param>
+        public Boat(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
-            DopColor = dopColor;
-            Windows = windows;
-            Capacity = capesity;
-        }        public void SetPosition(int x, int y, int width, int height)
-        {
-            _startPosX = x;
-            _startPosY = y;
-            _pictureWidth = width;
-            _pictureHeight = height;
-        }        public void MoveTransport(Direction direction)
+        }
+        public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
@@ -93,35 +64,12 @@ namespace WindowsFormsBoat
                     break;
             }
         }
-
-        public void DrawBoat(Graphics g)
+        public override void DrawBoat(Graphics g)
         {
-            Brush brM = new SolidBrush(MainColor);
-            g.FillRectangle(brM, _startPosX + 20, _startPosY + 10, 50, 30);
 
-            Brush brD = new SolidBrush(DopColor);
+            Brush brD = new SolidBrush(Color.Gray);
             g.FillEllipse(brD, _startPosX, _startPosY + 30, 90, 20);
-            g.FillRectangle(brD, _startPosX + 30, _startPosY, 10, 10);
 
-            Brush brYelloy = new SolidBrush(Color.Yellow);
-
-            switch (Windows)
-            {
-                case 0:
-                    break;
-                case 1:
-                    g.FillEllipse(brYelloy, _startPosX + 40, _startPosY + 35, 10, 10);
-                    break;
-                case 2:
-                    g.FillEllipse(brYelloy, _startPosX + 10, _startPosY + 35, 10, 10);
-                    g.FillEllipse(brYelloy, _startPosX + 70, _startPosY + 35, 10, 10);
-                    break;
-                case 3:
-                    g.FillEllipse(brYelloy, _startPosX + 10, _startPosY + 35, 10, 10);
-                    g.FillEllipse(brYelloy, _startPosX + 40, _startPosY + 35, 10, 10);
-                    g.FillEllipse(brYelloy, _startPosX + 70, _startPosY + 35, 10, 10);
-                    break;
-            }
         }
     }
 }
