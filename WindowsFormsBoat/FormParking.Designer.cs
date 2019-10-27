@@ -32,10 +32,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxTakeBoat = new System.Windows.Forms.PictureBox();
             this.buttonTakeBoat = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonSetSportBoat = new System.Windows.Forms.Button();
             this.buttonSetBoat = new System.Windows.Forms.Button();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeBoat)).BeginInit();
@@ -53,7 +54,7 @@
             // 
             this.groupBox1.Controls.Add(this.pictureBoxTakeBoat);
             this.groupBox1.Controls.Add(this.buttonTakeBoat);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
+            this.groupBox1.Controls.Add(this.maskedTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(1027, 269);
             this.groupBox1.Name = "groupBox1";
@@ -80,12 +81,12 @@
             this.buttonTakeBoat.UseVisualStyleBackColor = true;
             this.buttonTakeBoat.Click += new System.EventHandler(this.buttonTakeBoat_Click);
             // 
-            // maskedTextBox1
+            // maskedTextBox
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(79, 38);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(57, 22);
-            this.maskedTextBox1.TabIndex = 1;
+            this.maskedTextBox.Location = new System.Drawing.Point(79, 38);
+            this.maskedTextBox.Name = "maskedTextBox";
+            this.maskedTextBox.Size = new System.Drawing.Size(57, 22);
+            this.maskedTextBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -98,7 +99,7 @@
             // 
             // buttonSetSportBoat
             // 
-            this.buttonSetSportBoat.Location = new System.Drawing.Point(1055, 91);
+            this.buttonSetSportBoat.Location = new System.Drawing.Point(1043, 188);
             this.buttonSetSportBoat.Name = "buttonSetSportBoat";
             this.buttonSetSportBoat.Size = new System.Drawing.Size(120, 67);
             this.buttonSetSportBoat.TabIndex = 5;
@@ -108,7 +109,7 @@
             // 
             // buttonSetBoat
             // 
-            this.buttonSetBoat.Location = new System.Drawing.Point(1055, 31);
+            this.buttonSetBoat.Location = new System.Drawing.Point(1043, 128);
             this.buttonSetBoat.Name = "buttonSetBoat";
             this.buttonSetBoat.Size = new System.Drawing.Size(120, 54);
             this.buttonSetBoat.TabIndex = 4;
@@ -116,11 +117,22 @@
             this.buttonSetBoat.UseVisualStyleBackColor = true;
             this.buttonSetBoat.Click += new System.EventHandler(this.buttonSetBoat_Click);
             // 
+            // listBoxLevels
+            // 
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.ItemHeight = 16;
+            this.listBoxLevels.Location = new System.Drawing.Point(1019, 26);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(168, 84);
+            this.listBoxLevels.TabIndex = 8;
+            this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1199, 517);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.pictureBoxParking);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSetSportBoat);
@@ -141,9 +153,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBoxTakeBoat;
         private System.Windows.Forms.Button buttonTakeBoat;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonSetSportBoat;
         private System.Windows.Forms.Button buttonSetBoat;
+        private System.Windows.Forms.ListBox listBoxLevels;
     }
 }
