@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsBoat
 {
@@ -72,7 +73,7 @@ namespace WindowsFormsBoat
 
             Brush brDop = new SolidBrush(DopColor);
 
-            Brush brM = new SolidBrush(MainColor);
+            Brush brM = new SolidBrush(Color.Black);
             g.FillRectangle(brM, _startPosX + 20, _startPosY + 10, 50, 30);
             Brush brD = new SolidBrush(Color.Gray);
             base.DrawBoat(g);
@@ -101,6 +102,10 @@ namespace WindowsFormsBoat
                     g.FillEllipse(brYelloy, _startPosX + 70, _startPosY + 35, 10, 10);
                     break;
             }
+        }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
         }
     }
 }

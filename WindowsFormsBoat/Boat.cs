@@ -67,7 +67,7 @@ namespace WindowsFormsBoat
         public override void DrawBoat(Graphics g)
         {
 
-            Brush brD = new SolidBrush(Color.Gray);
+            Brush brD = new SolidBrush(MainColor);
             g.FillEllipse(brD, _startPosX, _startPosY + 30, 90, 20);
 
         }
