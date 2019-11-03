@@ -9,12 +9,6 @@ namespace WindowsFormsBoat
 {
     public class SportBoat : Boat
     {
-        /* /// Левая координата отрисовки
-         private float _startPosX;
-
-         /// Правая кооридната отрисовки 
-         private float _startPosY;*/
-
         /// Ширина окна отрисовки
         private int _pictureWidth;
 
@@ -66,12 +60,8 @@ namespace WindowsFormsBoat
 
         public override void DrawBoat(Graphics g)
         {
-
-
             Brush brYelloy = new SolidBrush(Color.Yellow);
-
             Brush brDop = new SolidBrush(DopColor);
-
             Brush brM = new SolidBrush(MainColor);
             g.FillRectangle(brM, _startPosX + 20, _startPosY + 10, 50, 30);
             Brush brD = new SolidBrush(Color.Gray);
