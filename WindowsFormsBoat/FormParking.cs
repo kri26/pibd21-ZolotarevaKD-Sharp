@@ -87,10 +87,10 @@ namespace WindowsFormsBoat
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                if (maskedTextBox.Text != "")
+                if (maskedTextBoxPosition.Text != "")
                 {
                     var car = parking[listBoxLevels.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBox.Text);
+                   Convert.ToInt32(maskedTextBoxPosition.Text);
                     if (car != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeBoat.Width,
