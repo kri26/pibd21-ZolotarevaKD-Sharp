@@ -89,16 +89,16 @@ namespace WindowsFormsBoat
             {
                 if (maskedTextBoxPosition.Text != "")
                 {
-                    var car = parking[listBoxLevels.SelectedIndex] -
+                    var boat = parking[listBoxLevels.SelectedIndex] -
                    Convert.ToInt32(maskedTextBoxPosition.Text);
-                    if (car != null)
+                    if (boat != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeBoat.Width,
                        pictureBoxTakeBoat.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 5, pictureBoxTakeBoat.Width,
+                        boat.SetPosition(5, 5, pictureBoxTakeBoat.Width,
                        pictureBoxTakeBoat.Height);
-                        car.DrawBoat(gr);
+                        boat.DrawBoat(gr);
                         pictureBoxTakeBoat.Image = bmp;
                     }
                     else
