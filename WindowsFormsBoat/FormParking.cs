@@ -68,9 +68,9 @@ namespace WindowsFormsBoat
 
         private void buttonTakeBoat_Click(object sender, EventArgs e)
         {
-            if (maskedTextBox1.Text != "")
+            if (maskedTextBoxPosition.Text != "")
             {
-                var boat = parking - Convert.ToInt32(maskedTextBox1.Text);
+                var boat = parking - Convert.ToInt32(maskedTextBoxPosition.Text);
                 if (boat != null)
                 {
                     Bitmap bmp = new Bitmap(pictureBoxTakeBoat.Width,
