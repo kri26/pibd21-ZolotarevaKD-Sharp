@@ -29,6 +29,18 @@ namespace WindowsFormsBoat
             Weight = weight;
             MainColor = mainColor;
         }
+
+        public Boat(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
+
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
@@ -66,10 +78,14 @@ namespace WindowsFormsBoat
         }
         public override void DrawBoat(Graphics g)
         {
-
             Brush brD = new SolidBrush(MainColor);
             g.FillEllipse(brD, _startPosX, _startPosY + 30, 90, 20);
 
+        }
+
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
     }
 }

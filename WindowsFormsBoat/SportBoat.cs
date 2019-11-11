@@ -10,12 +10,6 @@ namespace WindowsFormsBoat
 {
     public class SportBoat : Boat
     {
-        /* /// Левая координата отрисовки
-         private float _startPosX;
-
-         /// Правая кооридната отрисовки 
-         private float _startPosY;*/
-
         /// Ширина окна отрисовки
         private int _pictureWidth;
 
@@ -53,7 +47,6 @@ namespace WindowsFormsBoat
             get { return _windows; }
         }
 
-
         public SportBoat(int maxSpeed, float weight, Color mainColor, Color dopColor, int capesity, int windows) :
             base(maxSpeed, weight, mainColor)
         {
@@ -65,10 +58,21 @@ namespace WindowsFormsBoat
             Capacity = capesity;
         }
 
+        public SportBoat(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Windows = Convert.ToInt32(strs[4]);
+                Capacity = Convert.ToInt32(strs[5]);
+            }
+        }
         public override void DrawBoat(Graphics g)
         {
-
-
             Brush brYelloy = new SolidBrush(Color.Yellow);
 
             Brush brDop = new SolidBrush(DopColor);
@@ -77,6 +81,10 @@ namespace WindowsFormsBoat
             g.FillRectangle(brM, _startPosX + 20, _startPosY + 10, 50, 30);
             Brush brD = new SolidBrush(Color.Gray);
             base.DrawBoat(g);
+            Brush brMain = new SolidBrush(MainColor);
+            g.FillEllipse(brMain, _startPosX, _startPosY + 30, 90, 20);
+
+
             g.FillRectangle(brD, _startPosX + 30, _startPosY, 10, 10);
 
             switch (_windows)
@@ -106,6 +114,12 @@ namespace WindowsFormsBoat
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+
+        public override string ToString()
+        {
+           return base.ToString() + ";" + DopColor.Name + ";" + Windows + ";" +
+                Capacity;
         }
     }
 }
