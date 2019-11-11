@@ -45,54 +45,151 @@ namespace WindowsFormsBoat
                 }
                 return null;
             }
-        }
+        }
+        /*
+public bool SaveData(string filename)
+{
+  if (File.Exists(filename))
+  {
+      File.Delete(filename);
+  }
+  using (FileStream fs = new FileStream(filename, FileMode.Create))
+  {
+      //Записываем количество уровней
+      WriteToFile("CountLeveles:" + parkingStages.Count +
+     Environment.NewLine, fs);
+      foreach (var level in parkingStages)
+      {
+          //Начинаем уровень
+          WriteToFile("Level" + Environment.NewLine, fs);
+          for (int i = 0; i < countPlaces; i++)
+          {
+              var boat = level[i];
+              if (boat != null)
+              {
+                  //если место не пустое
+                  //Записываем тип мшаины
+                  if (boat.GetType().Name == "Boat")
+                  {
+                      WriteToFile(i + ":Boat:", fs);
+                  }
+                  if (boat.GetType().Name == "SportBoat")
+                  {
+                      WriteToFile(i + ":SportBoat:", fs);
+                  }
+                  //Записываемые параметры
+                  WriteToFile(boat + Environment.NewLine, fs);
+              }
+          }
+      }
+  }
+  return true;
+}
+/// <summary>
+/// Метод записи информации в файл
+/// </summary>
+/// <param name="text">Строка, которую следует записать</param>
+/// <param name="stream">Поток для записи</param>
+private void WriteToFile(string text, FileStream stream)
+{
+  byte[] info = new UTF8Encoding(true).GetBytes(text);
+  stream.Write(info, 0, info.Length);
+}
+
+public bool LoadData(string filename)
+{
+  if (!File.Exists(filename))
+  {
+      return false;
+  }
+  string bufferTextFromFile = "";
+  using (FileStream fs = new FileStream(filename, FileMode.Open))
+  {
+      byte[] b = new byte[fs.Length];
+      UTF8Encoding temp = new UTF8Encoding(true);
+      while (fs.Read(b, 0, b.Length) > 0)
+      {
+          bufferTextFromFile += temp.GetString(b);
+      }
+  }
+  bufferTextFromFile = bufferTextFromFile.Replace("\r", "");
+  var strs = bufferTextFromFile.Split('\n');
+  if (strs[0].Contains("CountLeveles"))
+  {
+      //считываем количество уровней
+      int count = Convert.ToInt32(strs[0].Split(':')[1]);
+      if (parkingStages != null)
+      {
+          parkingStages.Clear();
+      }
+      parkingStages = new List<Parking<ITransport>>(count);
+  }
+  else
+  {
+      //если нет такой записи, то это не те данные
+      return false;
+  }
+  int counter = -1;
+  ITransport boat = null;
+  for (int i = 1; i < strs.Length; ++i)
+  {
+      //идем по считанным записям
+      if (strs[i] == "Level")
+      {
+          //начинаем новый уровень
+          counter++;
+          parkingStages.Add(new Parking<ITransport>(countPlaces,
+              pictureWidth, pictureHeight));
+          continue;
+      }
+      if (string.IsNullOrEmpty(strs[i]))
+      {
+          continue;
+      }
+      if (strs[i].Split(':')[1] == "Boat")
+      {
+          boat = new Boat(strs[i].Split(':')[2]);
+      }
+      else if (strs[i].Split(':')[1] == "SportBoat")
+      {
+          boat = new SportBoat(strs[i].Split(':')[2]);
+      }
+      parkingStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = boat;
+  }
+  return true;
+}*/
+
         public bool SaveData(string filename)
         {
             if (File.Exists(filename))
             {
                 File.Delete(filename);
             }
-            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            using (StreamWriter sw = new StreamWriter(filename))
             {
-                //Записываем количество уровней
-                WriteToFile("CountLeveles:" + parkingStages.Count +
-               Environment.NewLine, fs);
+                sw.WriteLine("CountLeveles:" + parkingStages.Count);
                 foreach (var level in parkingStages)
                 {
-                    //Начинаем уровень
-                    WriteToFile("Level" + Environment.NewLine, fs);
+                    sw.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
-                        var boat = level[i];
-                        if (boat != null)
+                        var car = level[i];
+                        if (car != null)
                         {
-                            //если место не пустое
-                            //Записываем тип мшаины
-                            if (boat.GetType().Name == "Boat")
+                            if (car.GetType().Name == "Boat")
                             {
-                                WriteToFile(i + ":Boat:", fs);
+                                sw.Write(i + ":Boat:");
                             }
-                            if (boat.GetType().Name == "SportBoat")
+                            if (car.GetType().Name == "SportBoat")
                             {
-                                WriteToFile(i + ":SportBoat:", fs);
+                                sw.Write(i + ":SportBoat:");
                             }
-                            //Записываемые параметры
-                            WriteToFile(boat + Environment.NewLine, fs);
+                            sw.WriteLine(car);
                         }
                     }
                 }
+                return true;
             }
-            return true;
-        }
-        /// <summary>
-        /// Метод записи информации в файл
-        /// </summary>
-        /// <param name="text">Строка, которую следует записать</param>
-        /// <param name="stream">Поток для записи</param>
-        private void WriteToFile(string text, FileStream stream)
-        {
-            byte[] info = new UTF8Encoding(true).GetBytes(text);
-            stream.Write(info, 0, info.Length);
         }
 
         public bool LoadData(string filename)
@@ -101,62 +198,51 @@ namespace WindowsFormsBoat
             {
                 return false;
             }
-            string bufferTextFromFile = "";
-            using (FileStream fs = new FileStream(filename, FileMode.Open))
+            string buffer = "";
+            using (StreamReader sr = new StreamReader(filename))
             {
-                byte[] b = new byte[fs.Length];
-                UTF8Encoding temp = new UTF8Encoding(true);
-                while (fs.Read(b, 0, b.Length) > 0)
+                if ((buffer = sr.ReadLine()).Contains("CountLeveles"))
                 {
-                    bufferTextFromFile += temp.GetString(b);
+                    int count = Convert.ToInt32(buffer.Split(':')[1]);
+                    if (parkingStages != null)
+                    {
+                        parkingStages.Clear();
+                    }
+                    parkingStages = new List<Parking<ITransport>>(count);
                 }
-            }
-            bufferTextFromFile = bufferTextFromFile.Replace("\r", "");
-            var strs = bufferTextFromFile.Split('\n');
-            if (strs[0].Contains("CountLeveles"))
-            {
-                //считываем количество уровней
-                int count = Convert.ToInt32(strs[0].Split(':')[1]);
-                if (parkingStages != null)
+                else
                 {
-                    parkingStages.Clear();
+                    return false;
                 }
-                parkingStages = new List<Parking<ITransport>>(count);
-            }
-            else
-            {
-                //если нет такой записи, то это не те данные
-                return false;
-            }
-            int counter = -1;
-            ITransport boat = null;
-            for (int i = 1; i < strs.Length; ++i)
-            {
-                //идем по считанным записям
-                if (strs[i] == "Level")
+                int counter = -1;
+                ITransport boat = null;
+                while ((buffer = sr.ReadLine()) != null)
                 {
-                    //начинаем новый уровень
-                    counter++;
-                    parkingStages.Add(new Parking<ITransport>(countPlaces,
-                        pictureWidth, pictureHeight));
-                    continue;
+                    if (buffer == "Level")
+                    {
+                        counter++;
+                        parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
+                        continue;
+                    }
+                    if (string.IsNullOrEmpty(buffer))
+                    {
+                        continue;
+                    }
+                    if (buffer.Split(':')[1] == "Boat")
+                    {
+                        Console.WriteLine(buffer.Split(':')[2]);
+                        boat = new Boat(buffer.Split(':')[2]);
+                    }
+                    else if (buffer.Split(':')[1] == "SportBoat")
+                    {
+                        boat = new SportBoat(buffer.Split(':')[2]);
+                    }
+                    parkingStages[counter][Convert.ToInt32(buffer.Split(':')[0])] = boat;
                 }
-                if (string.IsNullOrEmpty(strs[i]))
-                {
-                    continue;
-                }
-                if (strs[i].Split(':')[1] == "Boat")
-                {
-                    boat = new Boat(strs[i].Split(':')[2]);
-                }
-                else if (strs[i].Split(':')[1] == "SportBoat")
-                {
-                    boat = new SportBoat(strs[i].Split(':')[2]);
-                }
-                parkingStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = boat;
             }
             return true;
         }
+
     }
 
 }
