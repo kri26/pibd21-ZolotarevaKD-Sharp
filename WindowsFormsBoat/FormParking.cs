@@ -85,30 +85,27 @@ namespace WindowsFormsBoat
 
         private void buttonTakeBoat_Click(object sender, EventArgs e)
         {
-            if (listBoxLevels.SelectedIndex > -1)
+            if (maskedTextBoxPosition.Text != "" && listBoxLevels.SelectedIndex > -1)
             {
-                if (maskedTextBoxPosition.Text != "")
+                var boat = parking[listBoxLevels.SelectedIndex] -
+               Convert.ToInt32(maskedTextBoxPosition.Text);
+                if (boat != null)
                 {
-                    var boat = parking[listBoxLevels.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBoxPosition.Text);
-                    if (boat != null)
-                    {
-                        Bitmap bmp = new Bitmap(pictureBoxTakeBoat.Width,
-                       pictureBoxTakeBoat.Height);
-                        Graphics gr = Graphics.FromImage(bmp);
-                        boat.SetPosition(5, 5, pictureBoxTakeBoat.Width,
-                       pictureBoxTakeBoat.Height);
-                        boat.DrawBoat(gr);
-                        pictureBoxTakeBoat.Image = bmp;
-                    }
-                    else
-                    {
-                        Bitmap bmp = new Bitmap(pictureBoxTakeBoat.Width,
-                       pictureBoxTakeBoat.Height);
-                        pictureBoxTakeBoat.Image = bmp;
-                    }
-                    Draw();
+                    Bitmap bmp = new Bitmap(pictureBoxTakeBoat.Width,
+                   pictureBoxTakeBoat.Height);
+                    Graphics gr = Graphics.FromImage(bmp);
+                    boat.SetPosition(5, 5, pictureBoxTakeBoat.Width,
+                   pictureBoxTakeBoat.Height);
+                    boat.DrawBoat(gr);
+                    pictureBoxTakeBoat.Image = bmp;
                 }
+                else
+                {
+                    Bitmap bmp = new Bitmap(pictureBoxTakeBoat.Width,
+                   pictureBoxTakeBoat.Height);
+                    pictureBoxTakeBoat.Image = bmp;
+                }
+                Draw();
             }
         }
 
