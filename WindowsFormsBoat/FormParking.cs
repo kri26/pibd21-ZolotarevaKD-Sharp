@@ -25,7 +25,8 @@ namespace WindowsFormsBoat
             {
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
-            listBoxLevels.SelectedIndex = 0;
+            listBoxLevels.SelectedIndex = 0;
+
         }
 
         private void Draw()
