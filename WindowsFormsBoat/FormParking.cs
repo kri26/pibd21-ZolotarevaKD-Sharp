@@ -85,7 +85,7 @@ namespace WindowsFormsBoat
 
         private void buttonTakeBoat_Click(object sender, EventArgs e)
         {
-            if (maskedTextBoxPosition.Text != "" && listBoxLevels.SelectedIndex > -1)
+            if (maskedTextBoxPosition.Text != "")
             {
                 var boat = parking[listBoxLevels.SelectedIndex] -
                Convert.ToInt32(maskedTextBoxPosition.Text);
