@@ -87,8 +87,7 @@ namespace WindowsFormsBoat
         {
             if (maskedTextBoxPosition.Text != "")
             {
-                var boat = parking[listBoxLevels.SelectedIndex] -
-               Convert.ToInt32(maskedTextBoxPosition.Text);
+                var boat = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxPosition.Text);
                 if (boat != null)
                 {
                     Bitmap bmp = new Bitmap(pictureBoxTakeBoat.Width,
