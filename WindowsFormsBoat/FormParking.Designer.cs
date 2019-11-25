@@ -36,6 +36,7 @@
             this.labelPosition = new System.Windows.Forms.Label();
             this.buttonSetSportBoat = new System.Windows.Forms.Button();
             this.buttonSetBoat = new System.Windows.Forms.Button();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBoxPickUpBoat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeBoat)).BeginInit();
@@ -98,7 +99,7 @@
             // 
             // buttonSetSportBoat
             // 
-            this.buttonSetSportBoat.Location = new System.Drawing.Point(1055, 91);
+            this.buttonSetSportBoat.Location = new System.Drawing.Point(1043, 188);
             this.buttonSetSportBoat.Name = "buttonSetSportBoat";
             this.buttonSetSportBoat.Size = new System.Drawing.Size(120, 67);
             this.buttonSetSportBoat.TabIndex = 5;
@@ -108,7 +109,7 @@
             // 
             // buttonSetBoat
             // 
-            this.buttonSetBoat.Location = new System.Drawing.Point(1055, 31);
+            this.buttonSetBoat.Location = new System.Drawing.Point(1043, 128);
             this.buttonSetBoat.Name = "buttonSetBoat";
             this.buttonSetBoat.Size = new System.Drawing.Size(120, 54);
             this.buttonSetBoat.TabIndex = 4;
@@ -116,11 +117,22 @@
             this.buttonSetBoat.UseVisualStyleBackColor = true;
             this.buttonSetBoat.Click += new System.EventHandler(this.buttonSetBoat_Click);
             // 
+            // listBoxLevels
+            // 
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.ItemHeight = 16;
+            this.listBoxLevels.Location = new System.Drawing.Point(1019, 26);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(168, 84);
+            this.listBoxLevels.TabIndex = 8;
+            this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1199, 517);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.pictureBoxParking);
             this.Controls.Add(this.groupBoxPickUpBoat);
             this.Controls.Add(this.buttonSetSportBoat);
@@ -145,5 +157,6 @@
         private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.Button buttonSetSportBoat;
         private System.Windows.Forms.Button buttonSetBoat;
+        private System.Windows.Forms.ListBox listBoxLevels;
     }
 }
