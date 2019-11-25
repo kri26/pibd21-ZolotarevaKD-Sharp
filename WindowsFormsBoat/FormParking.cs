@@ -12,7 +12,6 @@ namespace WindowsFormsBoat
 {
     public partial class FormParking : Form
     {
-        //Parking<ITransport> parking;
         MultiLevelParking parking;
         private const int countLevel = 5;
 
