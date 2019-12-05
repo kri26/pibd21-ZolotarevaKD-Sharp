@@ -34,7 +34,6 @@
             this.buttonTakeBoat = new System.Windows.Forms.Button();
             this.maskedTextBoxPosition = new System.Windows.Forms.MaskedTextBox();
             this.labelPosition = new System.Windows.Forms.Label();
-            this.buttonSetSportBoat = new System.Windows.Forms.Button();
             this.buttonSetBoat = new System.Windows.Forms.Button();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
@@ -97,16 +96,6 @@
             this.labelPosition.TabIndex = 0;
             this.labelPosition.Text = "Место";
             // 
-            // buttonSetSportBoat
-            // 
-            this.buttonSetSportBoat.Location = new System.Drawing.Point(1043, 188);
-            this.buttonSetSportBoat.Name = "buttonSetSportBoat";
-            this.buttonSetSportBoat.Size = new System.Drawing.Size(120, 67);
-            this.buttonSetSportBoat.TabIndex = 5;
-            this.buttonSetSportBoat.Text = "Припарковать спортивный катер";
-            this.buttonSetSportBoat.UseVisualStyleBackColor = true;
-            this.buttonSetSportBoat.Click += new System.EventHandler(this.buttonSetSportBoat_Click);
-            // 
             // buttonSetBoat
             // 
             this.buttonSetBoat.Location = new System.Drawing.Point(1043, 128);
@@ -135,7 +124,6 @@
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.pictureBoxParking);
             this.Controls.Add(this.groupBoxPickUpBoat);
-            this.Controls.Add(this.buttonSetSportBoat);
             this.Controls.Add(this.buttonSetBoat);
             this.Name = "FormParking";
             this.Text = "FormParking";
@@ -155,7 +143,6 @@
         private System.Windows.Forms.Button buttonTakeBoat;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPosition;
         private System.Windows.Forms.Label labelPosition;
-        private System.Windows.Forms.Button buttonSetSportBoat;
         private System.Windows.Forms.Button buttonSetBoat;
         private System.Windows.Forms.ListBox listBoxLevels;
     }
