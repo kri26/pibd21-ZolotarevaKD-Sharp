@@ -13,7 +13,8 @@ namespace WindowsFormsBoat
         List<Parking<ITransport>> parkingStages;
         private const int countPlaces = 20;
         private int pictureWidth;
-        private int pictureHeight;        private Logger logger;
+        private int pictureHeight;
+        private Logger logger;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -47,7 +48,7 @@ namespace WindowsFormsBoat
                 return null;
             }
         }
-
+      
         public bool SaveData(string filename)
         {
             if (File.Exists(filename))
