@@ -58,12 +58,6 @@ namespace WindowsFormsBoat
             }
         }
 
-        /// <summary>
-        /// Перегрузка оператора сложения
-        /// Логика действия: на парковку добавляется автомобиль
-        /// </summary>
-        /// <param name="p">Парковка</param>
-        /// <param name="boat">Добавляемый автомобиль</param>
         /// <returns></returns>
         public static int operator +(Parking<T> p, T boat)
         {
