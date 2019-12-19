@@ -1,4 +1,4 @@
-﻿using NLog;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +28,8 @@ namespace WindowsFormsBoat
             {
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
-            listBoxLevels.SelectedIndex = 0;
+            listBoxLevels.SelectedIndex = 0;
+
         }
 
         private void Draw()
@@ -105,7 +106,8 @@ namespace WindowsFormsBoat
                        pictureBoxTakeBoat.Height);
                         boat.DrawBoat(gr);
                         pictureBoxTakeBoat.Image = bmp;
-                        logger.Info("Изъят автомобиль " + boat.ToString() + " с места " + maskedTextBoxPosition.Text);
+                        logger.Info("Изъят автомобиль " + boat.ToString() + " с места " + maskedTextBoxPosition.Text);
+
                     }
                     else
                     {
