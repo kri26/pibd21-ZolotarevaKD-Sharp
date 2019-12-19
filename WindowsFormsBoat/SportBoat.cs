@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsBoat
 {
-    public class SportBoat : Boat
+    public class SportBoat : Boat, IComparable<SportBoat>, IEquatable<SportBoat>
     {
         /// Ширина окна отрисовки
         private int _pictureWidth;
@@ -120,6 +120,67 @@ namespace WindowsFormsBoat
         {
            return base.ToString() + ";" + DopColor.Name + ";" + Windows + ";" +
                 Capacity;
+        }
+
+        public int CompareTo(SportBoat other)
+        {
+            var res = (this is Boat).CompareTo(other is Boat);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Windows != other.Windows)
+            {
+                return Windows.CompareTo(other.Windows);
+            }
+            return 0;
+        }
+
+        public bool Equals(SportBoat other)
+        {
+            var res = (this as Boat).Equals(other as Boat);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Windows != other.Windows)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is SportBoat boatObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(boatObj);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
