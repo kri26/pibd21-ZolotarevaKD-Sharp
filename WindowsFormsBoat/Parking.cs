@@ -58,7 +58,6 @@ namespace WindowsFormsBoat
             }
         }
 
-        /// <returns></returns>
         public static int operator +(Parking<T> p, T boat)
         {
 
