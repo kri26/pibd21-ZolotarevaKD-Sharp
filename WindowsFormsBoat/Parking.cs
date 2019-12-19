@@ -47,13 +47,7 @@ namespace WindowsFormsBoat
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
-        /// <summary>
-        /// Перегрузка оператора сложения
-        /// Логика действия: на парковку добавляется автомобиль
-        /// </summary>
-        /// <param name="p">Парковка</param>
-        /// <param name="boat">Добавляемый автомобиль</param>
-        /// <returns></returns>
+
         public static int operator +(Parking<T> p, T boat)
         {
             if (p._places.Count == p._maxCount)
