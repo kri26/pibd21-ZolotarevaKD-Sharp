@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace WindowsFormsBoat
         private const int countPlaces = 20;
         private int pictureWidth;
         private int pictureHeight;
-
+        private Logger logger;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -27,8 +28,8 @@ namespace WindowsFormsBoat
             this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
-                parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
-               pictureHeight));
+               parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
+                    pictureHeight));
             }
         }
         /// <summary>
@@ -85,7 +86,8 @@ namespace WindowsFormsBoat
         {
             if (!File.Exists(filename))
             {
-                return false;
+                logger.Error("Файл не найден");
+                throw new FileNotFoundException();
             }
             string buffer = "";
             using (StreamReader sr = new StreamReader(filename))
@@ -101,7 +103,8 @@ namespace WindowsFormsBoat
                 }
                 else
                 {
-                    return false;
+                    logger.Error("Неверный формат файла");
+                    throw new Exception("Неверный формат файла");
                 }
                 int counter = -1;
                 ITransport boat = null;

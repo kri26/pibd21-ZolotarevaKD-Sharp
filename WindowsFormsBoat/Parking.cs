@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -46,18 +47,12 @@ namespace WindowsFormsBoat
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
-        /// <summary>
-        /// Перегрузка оператора сложения
-        /// Логика действия: на парковку добавляется автомобиль
-        /// </summary>
-        /// <param name="p">Парковка</param>
-        /// <param name="boat">Добавляемый автомобиль</param>
-        /// <returns></returns>
+
         public static int operator +(Parking<T> p, T boat)
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -81,7 +76,7 @@ namespace WindowsFormsBoat
                 p._places.Remove(index);
                 return boat;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
 
         private bool CheckFreePlace(int index)
@@ -135,6 +130,10 @@ namespace WindowsFormsBoat
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
                 }
             }
         }
