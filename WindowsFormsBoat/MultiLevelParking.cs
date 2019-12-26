@@ -1,4 +1,4 @@
-﻿using NLog;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,8 +28,8 @@ namespace WindowsFormsBoat
             this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
-               parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
-                    pictureHeight));
+                parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
+                     pictureHeight));
             }
         }
         /// <summary>
@@ -48,7 +48,7 @@ namespace WindowsFormsBoat
                 return null;
             }
         }
-        
+
         public bool SaveData(string filename)
         {
             if (File.Exists(filename))
@@ -134,5 +134,12 @@ namespace WindowsFormsBoat
             }
             return true;
         }
+
+        public void Sort()
+        {
+            parkingStages.Sort();
+        }
+
     }
+
 }

@@ -13,7 +13,6 @@ namespace WindowsFormsBoat
 {
     public partial class FormParking : Form
     {
-        //Parking<ITransport> parking;
         MultiLevelParking parking;
         FormBoatConfig form;
         private const int countLevel = 5;
@@ -184,6 +183,13 @@ namespace WindowsFormsBoat
                 }
                 Draw();
             }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
         }
     }
 }
